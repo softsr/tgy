@@ -2814,7 +2814,7 @@ update_timing1:
 	; with a (very slow) software divide only if timing permits.
 		cpi2	temp2, temp3, (TIMING_RANGE3 * CPU_MHZ / 2) >> 8, temp4
 		ldi2	XL, XH, MAX_POWER
-		brcs	update_timing4	; Fast timing: no duty limit.
+		rjmp	update_timing4	; Fast timing: no duty limit.
 
 		; 24.8-bit fixed-point unsigned divide, inlined with available registers:
 		; duty (XL:XH) = MAX_POWER * (TIMING_RANGE3 * CPU_MHZ / 2) / period (temp1:temp2:temp3)
